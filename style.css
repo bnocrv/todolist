@@ -1,0 +1,219 @@
+/* 🎨 Cores padrão do projeto: tema Dracula e tema claro */
+:root {
+  --dracula-bg: #282a36;         /* Fundo geral do tema escuro */
+  --dracula-fg: #f8f8f2;         /* Cor padrão do texto no escuro */
+  --dracula-comment: #6272a4;    /* Azul acinzentado usado no VS Code Dracula */
+  --dracula-cyan: #8be9fd;       /* Azul clarinho, usado como destaque */
+  --dracula-green: #50fa7b;      /* Verde neon para botões ou ações positivas */
+  --dracula-orange: #ffb86c;     /* Laranja para destacar botões ativos */
+  --dracula-pink: #ff79c6;       /* Rosa para enfeites ou ícones */
+  --dracula-purple: #bd93f9;     /* Roxo, usado no botão de tema */
+  --dracula-red: #ff5555;        /* Vermelho para ações como deletar */
+  --dracula-yellow: #f1fa8c;     /* Amarelo para alertas ou destaques */
+
+  --light-bg: #f4f4f4;           /* Cor de fundo do tema claro */
+  --light-fg: #222;              /* Cor do texto no claro */
+  --transition: 0.3s ease;       /* Suavidade nas animações */
+}
+
+/* 🎨 Estilo geral do corpo da página */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background-color var(--transition), color var(--transition);
+  background-color: var(--light-bg); /* Começa no modo claro */
+  color: var(--light-fg);
+}
+
+/* 🌙 Estilo ativado quando a classe .dark está no body */
+body.dark {
+  background-color: var(--dracula-bg);
+  color: var(--dracula-fg);
+}
+
+/* 🧱 Área central do app */
+.container {
+  max-width: 500px;
+  margin: 50px auto;            /* Centraliza vertical e horizontalmente */
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Sombra leve */
+  transition: background-color var(--transition);
+}
+
+/* 🧱 Container no modo escuro */
+body.dark .container {
+  background: #44475a;  /* Fundo do container mais escuro no dark mode */
+}
+
+/* 🏷️ Cabeçalho com título e botão de tema */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 📋 Título principal */
+h1 {
+  margin: 0 0 10px 0;
+}
+
+/* ☀️🌙 Botão que alterna entre os temas */
+#toggleTheme {
+  background-color: var(--dracula-purple);
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 🧾 Área do input e botão de adicionar */
+.input-area {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+/* ✏️ Campo de texto para digitar a tarefa */
+input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+/* ✏️ Campo de texto no modo escuro */
+body.dark input {
+  background-color: #6272a4;
+  color: white;
+  border: none;
+}
+
+/* ➕ Botão de adicionar nova tarefa */
+#addTaskBtn {
+  padding: 10px;
+  border: none;
+  background-color: var(--dracula-green);
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+/* 🎯 Botões de filtro: Todas / Ativas / Concluídas */
+#filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+/* 🟦 Estilo básico dos botões de filtro */
+#filters button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 6px;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color var(--transition);
+}
+
+/* 🔶 Botão de filtro que está ativo (selecionado) */
+#filters .active {
+  background-color: var(--dracula-orange);
+  color: #fff;
+}
+
+/* 🎛️ Botões de filtro no modo escuro */
+body.dark #filters button {
+  background: var(--dracula-comment);
+  color: white;
+}
+
+/* 📜 Lista das tarefas */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* 📌 Estilo de cada item da lista */
+li {
+  background: #eee;
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move; /* Mostra que o item pode ser arrastado */
+  transition: background-color var(--transition);
+}
+
+/* 📌 Estilo do item no modo escuro */
+body.dark li {
+  background-color: var(--dracula-cyan);
+  color: #222; /* Contraste forte com o fundo claro */
+}
+
+/* ☑️ Quando uma tarefa está concluída (clicada) */
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6; /* Suaviza o texto para parecer "desativado" */
+}
+
+/* 🪄 Estilo visual quando o item está sendo arrastado */
+li.dragging {
+  opacity: 0.4;
+  border: 2px dashed #888;
+}
+
+/* 👁️ Corrige o placeholder no input do tema escuro */
+body.dark input::placeholder {
+  color: white;
+  opacity: 0.8; /* Pode ajustar para 1.0 se quiser bem branco */
+}
+
+/* 🦶 Estilo do rodapé */
+footer {
+  max-width: 500px;
+  margin: 20px auto 40px; /* Espaço acima e abaixo, centralizado igual ao container */
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--light-fg);
+  background-color: #eee;
+  border-radius: 0 0 10px 10px; /* Bordas arredondadas só embaixo */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+/* Link dentro do footer */
+footer a {
+  color: var(--dracula-purple);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+footer a:hover,
+footer a:focus {
+  color: var(--dracula-pink);
+  text-decoration: underline;
+}
+
+/* Estilo do footer no modo escuro */
+body.dark footer {
+  background-color: #44475a;
+  color: var(--dracula-fg);
+}
+
+body.dark footer a {
+  color: var(--dracula-yellow);
+}
+
+body.dark footer a:hover,
+body.dark footer a:focus {
+  color: var(--dracula-orange);
+}
