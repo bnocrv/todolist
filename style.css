@@ -1,195 +1,95 @@
 /* 🎨 Cores padrão do projeto: tema Dracula e tema claro */
 :root {
-  --dracula-bg: #282a36;         /* Fundo geral do tema escuro */
-  --dracula-fg: #f8f8f2;         /* Cor padrão do texto no escuro */
-  --dracula-comment: #6272a4;    /* Azul acinzentado usado no VS Code Dracula */
-  --dracula-cyan: #8be9fd;       /* Azul clarinho, usado como destaque */
-  --dracula-green: #50fa7b;      /* Verde neon para botões ou ações positivas */
-  --dracula-orange: #ffb86c;     /* Laranja para destacar botões ativos */
-  --dracula-pink: #ff79c6;       /* Rosa para enfeites ou ícones */
-  --dracula-purple: #bd93f9;     /* Roxo, usado no botão de tema */
-  --dracula-red: #ff5555;        /* Vermelho para ações como deletar */
-  --dracula-yellow: #f1fa8c;     /* Amarelo para alertas ou destaques */
+  --dracula-bg: #282a36;
+  --dracula-fg: #f8f8f2;
+  --dracula-comment: #6272a4;
+  --dracula-cyan: #8be9fd;
+  --dracula-green: #50fa7b;
+  --dracula-orange: #ffb86c;
+  --dracula-pink: #ff79c6;
+  --dracula-purple: #bd93f9;
+  --dracula-red: #ff5555;
+  --dracula-yellow: #f1fa8c;
 
-  --light-bg: #f4f4f4;           /* Cor de fundo do tema claro */
-  --light-fg: #222;              /* Cor do texto no claro */
-  --transition: 0.3s ease;       /* Suavidade nas animações */
+  --light-bg: #f4f4f4;
+  --light-fg: #222;
+  --transition: 0.3s ease;
 }
 
-/* 🎨 Estilo geral do corpo da página */
-body {
+/* Reset e tamanho total da tela */
+html, body {
+  height: 100%;
+  width: 100%;
   margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
   font-family: 'Segoe UI', sans-serif;
-  transition: background-color var(--transition), color var(--transition);
-  background-color: var(--light-bg); /* Começa no modo claro */
+  background-color: var(--light-bg);
   color: var(--light-fg);
+  transition: background-color var(--transition), color var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 
-/* 🌙 Estilo ativado quando a classe .dark está no body */
+/* Modo escuro */
 body.dark {
   background-color: var(--dracula-bg);
   color: var(--dracula-fg);
 }
 
-/* 🧱 Área central do app */
+/* Container principal: ocupa todo espaço restante entre header e footer */
 .container {
   max-width: 500px;
-  margin: 50px auto;            /* Centraliza vertical e horizontalmente */
+  margin: 20px auto; /* centraliza horizontalmente */
   background: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Sombra leve */
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
   transition: background-color var(--transition);
+  flex: 1 1 auto; /* cresce para preencher verticalmente */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* scroll interno se necessário */
 }
 
-/* 🧱 Container no modo escuro */
+/* Container dark mode */
 body.dark .container {
-  background: #44475a;  /* Fundo do container mais escuro no dark mode */
+  background: #44475a;
 }
 
-/* 🏷️ Cabeçalho com título e botão de tema */
+/* Header fixo no topo */
 header {
+  max-width: 500px;
+  margin: 20px auto 0 auto;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 }
 
-/* 📋 Título principal */
-h1 {
-  margin: 0 0 10px 0;
-}
-
-/* ☀️🌙 Botão que alterna entre os temas */
-#toggleTheme {
-  background-color: var(--dracula-purple);
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* 🧾 Área do input e botão de adicionar */
-.input-area {
-  display: flex;
-  margin-bottom: 15px;
-}
-
-/* ✏️ Campo de texto para digitar a tarefa */
-input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-}
-
-/* ✏️ Campo de texto no modo escuro */
-body.dark input {
-  background-color: #6272a4;
-  color: white;
-  border: none;
-}
-
-/* ➕ Botão de adicionar nova tarefa */
-#addTaskBtn {
-  padding: 10px;
-  border: none;
-  background-color: var(--dracula-green);
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-}
-
-/* 🎯 Botões de filtro: Todas / Ativas / Concluídas */
-#filters {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
-}
-
-/* 🟦 Estilo básico dos botões de filtro */
-#filters button {
-  flex: 1;
-  margin: 0 5px;
-  padding: 6px;
-  border: none;
-  background: #ccc;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color var(--transition);
-}
-
-/* 🔶 Botão de filtro que está ativo (selecionado) */
-#filters .active {
-  background-color: var(--dracula-orange);
-  color: #fff;
-}
-
-/* 🎛️ Botões de filtro no modo escuro */
-body.dark #filters button {
-  background: var(--dracula-comment);
-  color: white;
-}
-
-/* 📜 Lista das tarefas */
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-/* 📌 Estilo de cada item da lista */
-li {
-  background: #eee;
-  margin: 6px 0;
-  padding: 10px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: move; /* Mostra que o item pode ser arrastado */
-  transition: background-color var(--transition);
-}
-
-/* 📌 Estilo do item no modo escuro */
-body.dark li {
-  background-color: var(--dracula-cyan);
-  color: #222; /* Contraste forte com o fundo claro */
-}
-
-/* ☑️ Quando uma tarefa está concluída (clicada) */
-.completed {
-  text-decoration: line-through;
-  opacity: 0.6; /* Suaviza o texto para parecer "desativado" */
-}
-
-/* 🪄 Estilo visual quando o item está sendo arrastado */
-li.dragging {
-  opacity: 0.4;
-  border: 2px dashed #888;
-}
-
-/* 👁️ Corrige o placeholder no input do tema escuro */
-body.dark input::placeholder {
-  color: white;
-  opacity: 0.8; /* Pode ajustar para 1.0 se quiser bem branco */
-}
-
-/* 🦶 Estilo do rodapé */
+/* Footer fixo na parte inferior */
 footer {
   max-width: 500px;
-  margin: 20px auto 40px; /* Espaço acima e abaixo, centralizado igual ao container */
+  margin: 0 auto 20px auto;
   padding: 10px 20px;
   text-align: center;
   font-size: 0.9rem;
   color: var(--light-fg);
   background-color: #eee;
-  border-radius: 0 0 10px 10px; /* Bordas arredondadas só embaixo */
+  border-radius: 0 0 10px 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   transition: background-color var(--transition), color var(--transition);
+  flex-shrink: 0;
 }
 
-/* Link dentro do footer */
+body.dark footer {
+  background-color: #44475a;
+  color: var(--dracula-fg);
+}
+
 footer a {
   color: var(--dracula-purple);
   text-decoration: none;
@@ -200,13 +100,6 @@ footer a {
 footer a:hover,
 footer a:focus {
   color: var(--dracula-pink);
-  text-decoration: underline;
-}
-
-/* Estilo do footer no modo escuro */
-body.dark footer {
-  background-color: #44475a;
-  color: var(--dracula-fg);
 }
 
 body.dark footer a {
@@ -218,25 +111,118 @@ body.dark footer a:focus {
   color: var(--dracula-orange);
 }
 
-/* 🔧 Garante que o app ocupe toda a tela no mobile */
-html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
+/* Botão tema */
+#toggleTheme {
+  background-color: var(--dracula-purple);
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Área input */
+.input-area {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+/* Input */
+input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  font-size: 1rem;
+}
+
+body.dark input {
+  background-color: #6272a4;
+  color: white;
+  border: none;
+}
+
+body.dark input::placeholder {
+  color: white;
+  opacity: 0.8;
+}
+
+/* Botão adicionar */
+#addTaskBtn {
+  padding: 10px;
+  border: none;
+  background-color: var(--dracula-green);
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Filtros */
+#filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  flex-shrink: 0;
+  gap: 5px;
+}
+
+#filters button {
+  flex: 1;
+  padding: 6px;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color var(--transition);
+  font-size: 0.9rem;
+}
+
+#filters .active {
+  background-color: var(--dracula-orange);
+  color: #fff;
+}
+
+body.dark #filters button {
+  background: var(--dracula-comment);
+  color: white;
+}
+
+/* Lista de tarefas - ocupa o máximo espaço possível */
+ul {
+  list-style: none;
   padding: 0;
-  overflow-x: hidden;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
-/* ⚠️ Permite que a .container cresça com 100% da altura da tela se necessário */
-.container {
-  min-height: calc(100vh - 60px); /* Subtrai o espaço do footer para ocupar a tela */
-  box-sizing: border-box;
+/* Item da lista */
+li {
+  background: #eee;
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  transition: background-color var(--transition);
 }
 
-/* 🦶 Garante que o footer fique no final da tela */
-footer {
-  width: 100%;
-  box-sizing: border-box;
+body.dark li {
+  background-color: var(--dracula-cyan);
+  color: #222;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+li.dragging {
+  opacity: 0.4;
+  border: 2px dashed #888;
 }

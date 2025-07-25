@@ -20,31 +20,34 @@
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <h1>📋 To-do List</h1>
-      <button id="toggleTheme">🌙 Modo Escuro</button>
-    </header>
+  <!-- Wrapper para controlar largura máxima e altura fixa -->
+  <div id="app-wrapper">
+    <div class="container">
+      <header>
+        <h1>📋 To-do List</h1>
+        <button id="toggleTheme">🌙 Modo Escuro</button>
+      </header>
 
-    <div class="input-area">
-      <input type="text" id="taskInput" placeholder="Digite uma nova tarefa..." />
-      <button id="addTaskBtn">Adicionar</button>
+      <div class="input-area">
+        <input type="text" id="taskInput" placeholder="Digite uma nova tarefa..." />
+        <button id="addTaskBtn">Adicionar</button>
+      </div>
+
+      <div id="filters">
+        <button data-filter="all" class="active">Todas</button>
+        <button data-filter="active">Ativas</button>
+        <button data-filter="completed">Concluídas</button>
+      </div>
+
+      <ul id="taskList"></ul>
     </div>
 
-    <div id="filters">
-      <button data-filter="all" class="active">Todas</button>
-      <button data-filter="active">Ativas</button>
-      <button data-filter="completed">Concluídas</button>
-    </div>
-
-    <ul id="taskList"></ul>
+    <footer>
+      <p>© 2025 Bruno Carvalho | GitHub:
+        <a href="https://github.com/BnoCrv" target="_blank" rel="noopener noreferrer">BnoCrv</a>
+      </p>
+    </footer>
   </div>
-
-  <footer>
-    <p>© 2025 Bruno Carvalho | GitHub:
-      <a href="https://github.com/BnoCrv" target="_blank" rel="noopener noreferrer">BnoCrv</a>
-    </p>
-  </footer>
 
   <!-- 🧠 JavaScript principal -->
   <script src="script.js"></script>
