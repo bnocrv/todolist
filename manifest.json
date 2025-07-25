@@ -1,8 +1,9 @@
 {
   "name": "To-do List Bnocrv",
   "short_name": "To-do",
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#282a36",
   "theme_color": "#bd93f9",
   "icons": [
