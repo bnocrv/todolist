@@ -1,65 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Viewport ajustado para PWA e dispositivos modernos -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <!-- Viewport ajustado para PWA e dispositivos modernos -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>To-do List | Bnocrv</title>
 
-  <title>To-do List | Bnocrv</title>
+    <!-- 🎨 Estilo -->
+    <link rel="stylesheet" href="style.css" />
 
-  <!-- 🎨 Estilo -->
-  <link rel="stylesheet" href="style.css" />
+    <!-- 📱 Manifesto PWA e cor do tema -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#bd93f9" />
 
-  <!-- 📱 Manifesto PWA e cor do tema -->
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#bd93f9" />
+    <!-- 🖼️ Ícone padrão -->
+    <link rel="icon" href="icons/icon-192.png" />
+  </head>
 
-  <!-- 🖼️ Ícone padrão -->
-  <link rel="icon" href="icons/icon-192.png" />
-</head>
+  <body>
+    <!-- Wrapper para controlar largura máxima e altura fixa -->
+    <div id="app-wrapper">
+      <div class="container">
+        <header>
+          <h1>📋 To-do List</h1>
+        </header>
 
-<body>
-  <!-- Wrapper para controlar largura máxima e altura fixa -->
-  <div id="app-wrapper">
-    <div class="container">
-      <header>
-        <h1>📋 To-do List</h1>
+        <div class="input-area">
+          <input
+            type="text"
+            id="taskInput"
+            placeholder="Digite uma nova tarefa..."
+          />
+          <button id="addTaskBtn">Adicionar</button>
+        </div>
+
+        <div id="filters">
+          <button data-filter="all" class="active">Todas</button>
+          <button data-filter="active">Ativas</button>
+          <button data-filter="completed">Concluídas</button>
+        </div>
+
+        <ul id="taskList"></ul>
+      </div>
+
+      <footer>
+        <p>
+          © 2025 Bruno dos S. Carvalho | GitHub:
+          <a
+            href="https://github.com/Bnocrv"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Bnocrv</a
+          >
+        </p>
         <button id="toggleTheme">🌙 Modo Escuro</button>
-      </header>
-
-      <div class="input-area">
-        <input type="text" id="taskInput" placeholder="Digite uma nova tarefa..." />
-        <button id="addTaskBtn">Adicionar</button>
-      </div>
-
-      <div id="filters">
-        <button data-filter="all" class="active">Todas</button>
-        <button data-filter="active">Ativas</button>
-        <button data-filter="completed">Concluídas</button>
-      </div>
-
-      <ul id="taskList"></ul>
+      </footer>
     </div>
 
-    <footer>
-      <p>© 2025 Bruno Carvalho | GitHub:
-        <a href="https://github.com/BnoCrv" target="_blank" rel="noopener noreferrer">BnoCrv</a>
-      </p>
-    </footer>
-  </div>
+    <!-- 🧠 JavaScript principal -->
+    <script src="script.js"></script>
 
-  <!-- 🧠 JavaScript principal -->
-  <script src="script.js"></script>
-
-  <!-- ⚙️ Registro do Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .then(() => console.log('✅ Service Worker registrado!'))
-        .catch(error => console.error('❌ Erro ao registrar SW:', error));
-    }
-  </script>
-</body>
-
+    <!-- ⚙️ Registro do Service Worker -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(() => console.log("✅ Service Worker registrado!"))
+          .catch((error) => console.error("❌ Erro ao registrar SW:", error));
+      }
+    </script>
+  </body>
 </html>
